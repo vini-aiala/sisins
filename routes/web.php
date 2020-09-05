@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('alunos')->group(function () {
+    Route::get('/', 'AlunoController@index')->name('alunos-index');
+    Route::get('/lista', 'AlunoController@listaCursos')->name('alunos-lista');
+    Route::get('/prova', 'AlunoController@prova')->name('alunos-prova');
+    Route::get('/edicao', 'AlunoController@edicao')->name('alunos-edicao');
+});
+
