@@ -13,13 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Rota raiz
 Route::get('/', function () {
     return view('index');
+})->name('index');
+
+//Autenticação
+Route::get('/cadastro', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('/cadastro', 'Auth\RegisterController@register');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/login', 'Auth\LoginController@login');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::prefix('senha')->group(function () {
+    Route::get('/confirma', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password.confirm');
+    Route::post('/confirma', 'Auth\ConfirmPasswordController@showConfirmForm');
+    Route::post('/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    Route::get('/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::post('/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+    Route::get('/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('alunos')->group(function () {
     Route::get('/', 'AlunoController@index')->name('alunos-index');
