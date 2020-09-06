@@ -32,8 +32,12 @@ Route::prefix('senha')->group(function () {
     Route::post('/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
     Route::get('/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 });
+Route::prefix('email')->group(function () {
+    Route::post('/reenvio', 'Auth\VerificationController@resend')->name('verification.resend');
+    Route::get('/verifica', 'Auth\VerificationController@show')->name('verification.notice');
+    Route::get('/verifica/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
+});
 
-Auth::routes();
 
 
 Route::prefix('alunos')->group(function () {
