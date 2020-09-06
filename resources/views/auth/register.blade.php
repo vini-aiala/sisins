@@ -33,10 +33,8 @@
 
 @section('main')
     <img alt="Logo da Share" class="logo" src="../img/share-logo.png">
-
-
-    <div class="col-md-7 justify-content-center">
-        <h1>Cadastro</h1>
+    <div class="row justify-content-center mb-5">
+        <h1 class="col-md-7 text-center pt-4 pb-2">Cadastro</h1>
         @if($errors->any())
             @foreach ($errors->all() as $message)
                 <div class="alert alert-danger" role="alert">
@@ -44,7 +42,7 @@
                 </div>
             @endforeach
         @endif
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" class="col-md-7 justify-content-center" action="{{ route('register') }}">
             @csrf
             <div class="form-group">
                 <label for="nome">Nome completo</label>
@@ -57,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label for="password">Senha</label>
-                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required autocomplete="new-password">
+                <input type="password" class="form-control @error('password') is-invalid @enderror" minlength="8" id="password" name="password" required autocomplete="new-password">
                 <small id="passwordHelp" class="form-text text-muted">A senha deve ter 8 caracteres no mínimo.</small>
             </div>
             <div class="form-group">
