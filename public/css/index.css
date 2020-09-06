@@ -24,16 +24,14 @@ body{
     background-color: #FF8000;
     color: white;
     font-weight: bold;
-    margin-top: 4em;
-    padding-top: 0.75em;
+    padding-top: 1em;
 }
 
 .login{
     background-color: #04B404;
     color: white;
     font-weight: bold;
-    margin-top: 4em;
-    padding-top: 0.75em;
+    padding-top: 1em;
 }
 
 .btn{

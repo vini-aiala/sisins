@@ -1,77 +1,79 @@
-@extends('layouts.app')
+@extends('layouts.layout')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+@section('css')
+    <link rel="stylesheet" type="text/css" href="../css/cadastro.css">
+    <script type="text/javascript">
+        /* Máscaras ER */
+        function mascara(o,f){
+            v_obj=o
+            v_fun=f
+            setTimeout("execmascara()",1)
+        }
+        function execmascara(){
+            v_obj.value=v_fun(v_obj.value)
+        }
+        function mtel(v){
+            v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
+            v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+            v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+            return v;
+        }
+        function id( el ){
+            return document.getElementById( el );
+        }
+        window.onload = function(){
+            id('telefone').onkeyup = function(){
+                mascara( this, mtel );
+            }
+        }
+    </script>
+@endsection
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+@section('title', 'Cadastro Share')
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+@section('main')
+    <img alt="Logo da Share" class="logo" src="../img/share-logo.png">
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+    <div class="col-md-7 justify-content-center">
+        <h1>Cadastro</h1>
+        @if($errors->any())
+            @foreach ($errors->all() as $message)
+                <div class="alert alert-danger" role="alert">
+                    {{ $message }}
                 </div>
+            @endforeach
+        @endif
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+            <div class="form-group">
+                <label for="nome">Nome completo</label>
+                <input type="text" class="form-control @error('nome') is-invalid @enderror" id="nome" name="nome" required autocomplete="name">
             </div>
-        </div>
+            <div class="form-group">
+                <label for="email">Endereço de e-mail</label>
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" required autocomplete="email">
+                <small id="emailHelp" class="form-text text-muted">Será enviado uma confirmação posteriormente.</small>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required autocomplete="new-password">
+                <small id="passwordHelp" class="form-text text-muted">A senha deve ter 8 caracteres no mínimo.</small>
+            </div>
+            <div class="form-group">
+                <label for="password-confirm">Confirme sua senha</label>
+                <input type="password" class="form-control @error('password-confirm') is-invalid @enderror" id="password-confirm" name="password_confirmation" required autocomplete="new-password">
+            </div>
+            <div class="form-group">
+                <label for="data-nascimento">Data de nascimento</label>
+                <input type="date" class="form-control @error('data_nascimento') is-invalid @enderror" id="data_nascimento" name="data_nascimento" max="2010-01-01" min="1920-01-01" required autocomplete="bday">
+            </div>
+            <div class="form-group">
+                <label for="telefone">Número de telefone</label>
+                <input type="tel" class="form-control @error('telefone') is-invalid @enderror" id="telefone" name="telefone" pattern="\(\d{2}\) \d?\d{4}-\d{4}" placeholder="Exemplo: (99) 9999-9999 ou (99) 99999-9999" required autocomplete="tel-areacode">
+                <small id="telefoneHelp" class="form-text text-muted">Utilize um número de telefone pessoal, será a principal forma de comunicação.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
     </div>
-</div>
 @endsection
