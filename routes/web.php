@@ -38,9 +38,12 @@ Route::prefix('email')->group(function () {
     Route::get('/verifica/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 });
 
+//Cadastro da pessoa como aluno
+Route::get('/regaluno', 'CadastroAlunoController@exibeCadastro')->name('cadastro-aluno')->middleware('auth');
+Route::post('/regaluno', 'CadastroAlunoController@processaCadastro')->middleware('auth');
 
-
-Route::prefix('alunos')->group(function () {
+//Rotas do aluno
+Route::group(['prefix' => 'alunos',  'middleware' => ['aluno', 'verified']], function() {
     Route::get('/', 'AlunoController@index')->name('alunos-index');
     Route::get('/lista', 'AlunoController@listaCursos')->name('alunos-lista');
     Route::get('/prova', 'AlunoController@prova')->name('alunos-prova');
