@@ -33,8 +33,8 @@
 
 @section('main')
     <img alt="Logo da Share" class="logo" src="../img/share-logo.png">
-    <div class="row justify-content-center mb-5">
-        <h1 class="col-md-7 text-center pt-4 pb-2">Cadastro</h1>
+    <div class="mx-auto col-md-7 mb-5">
+        <h1 class="text-center pt-4 pb-2">Cadastro</h1>
         @if($errors->any())
             @foreach ($errors->all() as $message)
                 <div class="alert alert-danger" role="alert">
@@ -42,7 +42,7 @@
                 </div>
             @endforeach
         @endif
-        <form method="POST" class="col-md-7 justify-content-center" action="{{ route('register') }}">
+        <form method="POST" class="justify-content-center" action="{{ route('register') }}">
             @csrf
             <div class="form-group">
                 <label for="nome">Nome completo</label>
@@ -51,7 +51,7 @@
             <div class="form-group">
                 <label for="email">Endereço de e-mail</label>
                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" required autocomplete="email">
-                <small id="emailHelp" class="form-text text-muted">Será enviado uma confirmação posteriormente.</small>
+                <small id="emailHelp" class="form-text text-muted">Será enviada uma confirmação posteriormente.</small>
             </div>
             <div class="form-group">
                 <label for="password">Senha</label>
