@@ -10,7 +10,8 @@
         @yield('css')
     </head>
 
-    <body>
+    <body class="pt-5">
+        @yield('navbar')
         <main class="container">
             @yield('main')
         </main>

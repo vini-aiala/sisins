@@ -31,6 +31,10 @@
 
 @section('title', 'Cadastro Share')
 
+@section('navbar')
+    @include('components.guest-navbar')
+@endsection
+
 @section('main')
     <img alt="Logo da Share" class="logo" src="../img/share-logo.png">
     <div class="mx-auto col-md-7 mb-5">

@@ -6,8 +6,12 @@
 
 @section('title', 'Inscrição Share')
 
+@section('navbar')
+    @include('components.guest-navbar')
+@endsection
+
 @section('main')
-    <div class="row align-items-center justify-content-center">
+    <div class="row align-items-center justify-content-center mt-5">
         <div>
             <img alt="Logo da Share" class="logo" src="../img/share-logo.png">
         </div>
