@@ -13,7 +13,7 @@
 @section('main')
         @if($errors->any())
             @foreach ($errors->all() as $message)
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-danger mt-2" role="alert">
                     {{ $message }}
                 </div>
             @endforeach
