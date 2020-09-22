@@ -1,0 +1,26 @@
+body{
+	background-color: white;
+}
+
+header{
+	/*background-image: linear-gradient(to right, #81F781, #81BEF7, #F781F3);*/ /*verde azul rosa*/
+	background-image: linear-gradient(to right, #81BEF7, #F78181, #F781F3); /*azul vermelho rosa*/
+}
+
+.link_menu{
+	color: black;
+}
+
+.imagem_logo{
+	height: 65px;
+	padding: .1em;
+}
+h3{
+	text-align: center;
+}
+
+.mais{
+	font-size: 103px;
+	text-align: center;
+	margin-bottom: 50px;
+}
