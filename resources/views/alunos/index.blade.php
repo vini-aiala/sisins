@@ -1,51 +1,44 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Inscrição Share</title>
-		<link rel="icon" href="../img/globo.png">
-		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="../css/materialize.css">
-		<link rel="stylesheet" type="text/css" href="../css/inscricoes.css">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+@extends('layouts.layout')
 
-	</head>
+@section('title', 'Sistema de Inscrições · Aluno')
 
-	<body>
+@section('css')
+    <link rel="stylesheet" type="text/css" href="../css/inscricoes.css">
+@endsection
 
-		<main>
+@section('navbar')
+    @include('components.aluno-navbar')
+@endsection
 
-			<div class="row">
-			    <div class="col s12 m0 l3"></div>
-			    <div class="col s12 m12 l3">
-			    	<div class="card">
-				    	<div class="card-image">
-				    		<img alt="Logo da Share" class="logo" src="../img/share-logo.png">
-				    	</div>
-				    </div>
-			    </div>
-			    <div class="center col s12 m12 l3">
-			    	<a href="{{ route('alunos-edicao') }}" class="center atualizar waves-effect waves-light btn">Atualizar perfil</a>
-
-					<h5>Seus cursos:</h5>
-					<ul class="collection with-header">
-				        <li class="collection-item">
-							<span class="title"><b>Violão</b></span>
-							<a href="{{ route('alunos-lista') }}" class="secondary-content"><i class="material-icons">delete</i></a>
-							<p>Básico A - Quinta-feira, das 12:00 ás 13:00</p>
-						</li>
-				        <li class="collection-item"><div><i>Curso não selecionado</i><a href="#!" class="secondary-content"><i class="material-icons">add</i></a></div></li>
-				    </ul>
-			    </div>
-			    <div class="col s12 m0 l3"></div>
-			  </div>
-
-		</main>
-
-		<!--JavaScript para animação e validação de email e senha-->
-      <script type="text/javascript" src="../js/materialize.min.js"></script>
-
-
-
-	</body>
-</html>
+@section('main')
+    <div class="row align-items-center justify-content-center mt-5">
+        <div>
+            <img alt="Logo da Share" class="logo" src="/img/share-logo.png">
+        </div>
+        <div class="d-flex flex-column">
+            <a href="{{ route('alunos-edicao') }}" class="atualizar btn mx-auto">Atualizar perfil</a>
+            <div class="card card-largura mt-3">
+                <div class="card-header">
+                    Seus cursos:
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="col p-0"><b>Violão</b></span>
+                            <a href="#remove" class="secondary-content col-1 p-0"><i class="material-icons">delete</i></a>
+                        </div>
+                        <p class="col-12 p-0">Básico A - Quinta-feira, das 12:00 às 13:00</p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="col p-0">Curso não selecionado</span>
+                            <a class="col-1 p-0" href="{{ route('alunos-lista') }}" class="secondary-content">
+                                <i class="material-icons">add</i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+@endsection
