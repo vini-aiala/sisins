@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Questao extends Model
 {
+    protected $table = 'questoes';
+
     public $timestamps = false;
     protected $fillable = [
         'numero',

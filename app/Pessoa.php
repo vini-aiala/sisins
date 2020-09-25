@@ -39,7 +39,7 @@ class Pessoa extends Authenticatable implements MustVerifyEmail
     ];
 
     // relaciona com a tabela inscricoes
-    public function relIncricoes(){
+    public function relInscricoes(){
         return $this->hasMany(Inscricao::class, 'pessoa_id');
     }
 }

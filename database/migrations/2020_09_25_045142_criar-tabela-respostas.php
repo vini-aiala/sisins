@@ -22,7 +22,7 @@ class CriarTabelaRespostas extends Migration
 
         Schema::table('respostas', function (Blueprint $table) {
             $table->foreign('inscricao_id')->references('id')->on('questoes')->onDelete('cascade');
-            $table->foreign('numero_id')->references('id')->on('inscricoes')->onDelete('cascade');
+            $table->foreign('numero_id')->references('id')->on('questoes')->onDelete('cascade');
         });
     }
 
