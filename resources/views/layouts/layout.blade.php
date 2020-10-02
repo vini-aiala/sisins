@@ -4,7 +4,9 @@
         <title>@yield('title')</title>
         <link rel="icon" href="../img/globo.png">
         <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/header.css') }}" rel="stylesheet">
         <script src="{{ asset('js/app.js') }}" defer></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         @yield('css')
@@ -15,5 +17,8 @@
         <main class="container">
             @yield('main')
         </main>
+
+        <!--JavaScript para animação e validação de email e senha-->
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
     </body>
 </html>

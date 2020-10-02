@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link href="/css/index.css" rel="stylesheet" type="text/css">
 @endsection
 
-@section('title', 'Inscrição Share')
+@section('title', 'Sistema de Inscrições · Início')
 
 @section('navbar')
     @include('components.guest-navbar')

@@ -15,7 +15,7 @@ class CriarTabelaAlunos extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('pessoas');
             $table->string('categoria');
             $table->string('tipo_vinculo');
             $table->string('ocupacao');
