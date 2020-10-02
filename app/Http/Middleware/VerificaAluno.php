@@ -18,8 +18,8 @@ class VerificaAluno
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-            $id = Auth::id();
-            if(DB::table('alunos')->where('id', $id)->exists()) {
+            $user = Auth::user();
+            if($user->aluno()) {
                 return $next($request);
             } else {
                 return redirect()->route('cadastro-aluno');

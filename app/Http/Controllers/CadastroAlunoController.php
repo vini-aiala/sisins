@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Aluno;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -43,8 +44,8 @@ class CadastroAlunoController extends Controller
 
     protected function create(array $data)
     {
-        DB::table('alunos')->insert([
-            'user_id'           => Auth::id(),
+        $aluno = Aluno::create([
+            'pessoa_id'         => Auth::id(),
             'categoria'         => $data['categoria'],
             'tipo_vinculo'      => $data['tipo-vinculo'],
             'ocupacao'          => $data['ocupacao'],
@@ -58,5 +59,6 @@ class CadastroAlunoController extends Controller
             'cursou_share'      => $data['cursou-share'],
             'desistencia'       => $data['desistencia'],
         ]);
+        $aluno->save();
     }
 }

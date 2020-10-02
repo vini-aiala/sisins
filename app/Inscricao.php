@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Inscricao extends Model
 {
     protected $table = 'inscricoes';
-    
+
     protected $fillable = [
         'pessoa_id',
         'curso_id',
@@ -16,7 +16,7 @@ class Inscricao extends Model
     ];
 
     // relaciona com a tabela respostas
-    public function relRespostas(){
+    public function respostas(){
         return $this->hasMany(Resposta::class, 'inscricao_id');
     }
 }

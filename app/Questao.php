@@ -21,7 +21,7 @@ class Questao extends Model
     ];
 
     // relaciona com a tabela respostas
-    public function relRespostas(){
+    public function respostas(){
         return $this->hasMany(Resposta::class, 'numero_id');
     }
 }

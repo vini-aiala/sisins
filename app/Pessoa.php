@@ -38,8 +38,13 @@ class Pessoa extends Authenticatable implements MustVerifyEmail
         'data_nascimento' => 'datetime',
     ];
 
+    public function aluno()
+    {
+        return $this->belongsTo(Aluno::class);
+    }
+
     // relaciona com a tabela inscricoes
-    public function relInscricoes(){
+    public function inscricoes(){
         return $this->hasMany(Inscricao::class, 'pessoa_id');
     }
 }

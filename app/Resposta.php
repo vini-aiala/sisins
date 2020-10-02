@@ -15,4 +15,6 @@ class Resposta extends Model
         'numero_id',
         'alternativa'
     ];
+
+
 }
